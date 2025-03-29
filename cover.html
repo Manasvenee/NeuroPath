@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeuroPath</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="header">
+        <div class="logo"><p style="font-family:'Fraktur'">NeuroPath</p></div>
+        <div class="buttons">
+            <button onclick="toggleMute()">🔇</button>
+            <button onclick="location.href='main.html'">🏠</button>>
+        </div>
+    </div>
+
+    <h2><p style="font-family:'Fraktur'">Choose Your Challenge</p></h2>
+    
+    <div class="game-container">
+        <div class="games" id="gameSlider">
+            <div class="game"><a href="game1.html">Word Wizardry</a></div>
+            <div class="game"><a href="game2.html">Shape Shifter</a></div>
+            <div class="game"><a href="game3.html">Shape Builder</a></div>
+            <div class="game"><a href="game4.html">Hit the Lights</a></div>
+        </div>
+    </div>
+    
+    <button onclick="nextGame()">▶</button>
+    <br>
+</br>
+
+<br>
+</br>
+
+    <div class="quote" id="quote">"The only limit to our realization of tomorrow is our doubts of today."</div>
+    
+    <script src="function.js"></script>
+</body>
+</html>
