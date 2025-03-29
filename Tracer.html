@@ -5,6 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shape Tracing Game</title>
     <style>
+        .header { 
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+        }
+        .buttons {
+            display: flex;
+            gap: 10px;
+            margin-left: auto;
+        }
         canvas {
             border: 1px solid black;
             display: block;
@@ -20,9 +31,25 @@
             font-family: Arial, sans-serif;
             display: none; /* Hidden by default */
         }
+        button {
+            width: fit-content;
+            padding: 10px;
+            font-size: 16 px;
+            cursor: pointer;
+            
+        }
     </style>
 </head>
 <body>
+    <div class="header">
+        <div class="logo">
+            <p style="font-family:'Fraktur'">NeuroPath</p>
+        </div>
+        <div class="buttons">
+            <button onclick="toggleMute()">🔇</button>
+            <button onclick="location.href='main.html'">🏠</button>
+        </div>
+    </div>
     <h1 id="instructions">Trace the shapes!</h1>
     <div id="scoreboard"></div>
     <canvas id="gameCanvas" width="500" height="500"></canvas>
