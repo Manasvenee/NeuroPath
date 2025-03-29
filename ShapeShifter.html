@@ -1,1 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Shape Matching Game</title>
+    <style>
+        #gameContainer {
+            width: 600px;
+            height: 400px;
+            border: 2px solid black;
+            position: relative;
+            margin: 0 auto;
+        }
+        body {
+            overflow: hidden;
+            margin: 0;
+        }
+        .draggable {
+            position: absolute;
+            cursor: grab;
+            font-size: 70px;
+        }
+    </style>
+</head>
+<body>
+    <div id="gameContainer">
+        <div class="draggable" id="dragTriangle" style="left: 50px; top: 320px;">▲</div>
+        <div class="draggable" id="dragCircle" style="left: 250px; top: 320px;">●</div>
+        <div class="draggable" id="dragSquare" style="left: 450px; top: 320px;">■</div>
+    </div>
+
+    <script>
+        const container = document.getElementById('gameContainer');
+        let draggedElement = null;
+        let offset = { x: 0, y: 0 };
+
+        class Shape {
+            constructor(type, x, y, speed) {
+                this.type = type;
+                this.x = x;
+                this.y = y;
+                this.speed = speed;
+                this.direction = Math.random() * Math.PI * 2;
+                this.element = document.createElement('div');
+                this.element.textContent = this.getSymbol();
+                this.element.style.position = 'absolute';
+                this.element.style.fontSize = '40px';
+                this.updatePosition();
+                container.appendChild(this.element);
+                this.stopped = false;
+            }
+
+            getSymbol() {
+                return {
+                    triangle: '▲',
+                    circle: '●',
+                    square: '■'
+                }[this.type];
+            }
+
+            updatePosition() {
+                this.element.style.left = `${this.x}px`;
+                this.element.style.top = `${this.y}px`;
+            }
+
+            move() {
+                if (this.stopped) return;
+
+                this.x += Math.cos(this.direction) * this.speed;
+                this.y += Math.sin(this.direction) * this.speed;
+
+                if (this.x < 0 || this.x > 560) this.direction = Math.PI - this.direction;
+                if (this.y < 0 || this.y > 360) this.direction = -this.direction;
+
+                this.updatePosition();
+            }
+        }
+
+        const targets = [
+            new Shape('triangle', 100, 100, 2),
+            new Shape('circle', 300, 200, 1.5),
+            new Shape('square', 500, 150, 1.75)
+        ];
+
+        document.querySelectorAll('.draggable').forEach(element => {
+            element.addEventListener('mousedown', startDrag);
+        });
+
+        function startDrag(e) {
+            draggedElement = e.target;
+            const rect = draggedElement.getBoundingClientRect();
+            draggedElement.style.left = `${rect.left}px`;
+            draggedElement.style.top = `${rect.top}px`;
+            offset.x = e.clientX - rect.left;
+            offset.y = e.clientY - rect.top;
+
+            document.addEventListener('mousemove', drag);
+            document.addEventListener('mouseup', endDrag);
+        }
+
+        function drag(e) {
+            if (!draggedElement) return;
+
+            const containerRect = container.getBoundingClientRect();
+            const newLeft = e.clientX - containerRect.left - offset.x;
+            const newTop = e.clientY - containerRect.top - offset.y;
+
+            const maxLeft = containerRect.width - draggedElement.offsetWidth;
+            const maxTop = containerRect.height - draggedElement.offsetHeight;
+
+            draggedElement.style.left = `${Math.min(Math.max(newLeft, 0), maxLeft)}px`;
+            draggedElement.style.top = `${Math.min(Math.max(newTop, 0), maxTop)}px`;
+
+            checkCollision();
+        }
+
+        function endDrag() {
+            document.removeEventListener('mousemove', drag);
+            document.removeEventListener('mouseup', endDrag);
+            draggedElement = null;
+        }
+
+        function checkCollision() {
+            if (!draggedElement) return;
+            const dragRect = draggedElement.getBoundingClientRect();
+            targets.forEach(target => {
+                const targetRect = target.element.getBoundingClientRect();
+                if (checkOverlap(dragRect, targetRect) && draggedElement.id.toLowerCase().includes(target.type)) {
+                    handleMatch(target);
+                }
+            });
+        }
+
+        function checkOverlap(rect1, rect2) {
+            return !(rect1.right < rect2.left ||
+                     rect1.left > rect2.right ||
+                     rect1.bottom < rect2.top ||
+                     rect1.top > rect2.bottom);
+        }
+
+        function handleMatch(target) {
+            if (!draggedElement) return;
+
+            target.stopped = true;
+            target.element.style.color = 'green';
+            target.element.style.fontSize = '70px';
+            draggedElement.style.display = 'none';
+            draggedElement = null;
+            checkWin();
+        }
+
+        function checkWin() {
+            if ([...document.querySelectorAll('.draggable')].every(el => el.style.display === 'none')) {
+                alert('Congratulations! You matched all shapes!');
+            }
+        }
+
+        function gameLoop() {
+            targets.forEach(target => target.move());
+            requestAnimationFrame(gameLoop);
+        }
+
+        gameLoop();
+    </script>
+</body>
+</html>
 
