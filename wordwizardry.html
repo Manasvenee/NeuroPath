@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Wizardry</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="header">
+        <div class="logo">
+            <p>NeuroPath</p>
+        </div>
+        <div class="buttons">
+            <button id="mute-btn">🔇</button>
+            <button onclick="location.href='cover.html'">🏠</button>
+        </div>
+    </div>
+
+    <div class="content">
+        <h1>Word Wizardry</h1>
+        <div id="quote-display"></div>
+        <input type="text" id="quote-input" placeholder="Type the quote here">
+        <button id="submit-btn">Submit</button>
+        <div id="error-message" class="hidden">Incorrect! Try again.</div>
+    </div>
+
+    <div id="congratulations-screen" class="hidden">
+        Congratulations! You completed all the quotes!
+    </div>
+
+    <script src="wordwizardry.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>
