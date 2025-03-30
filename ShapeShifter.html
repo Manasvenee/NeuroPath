@@ -1,54 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Shape Matching Game</title>
+    <title>Shape Shifter</title>
+    <link rel="stylesheet" href="style.css">
     <style>
-         .header { 
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px;
-        }
-        .buttons {
-            display: flex;
-            gap: 10px;
-            margin-left: auto;
-        }
         #gameContainer {
             width: 600px;
             height: 400px;
-            border: 2px solid black;
+            border: 2px solid #A0522D; /* Sienna */
             position: relative;
-            margin: 0 auto;
+            margin: 20px auto;
+            background-color: #FFFAF0; /* Ivory */
         }
         body {
             overflow: hidden;
-            margin: 0;
         }
         .draggable {
             position: absolute;
             cursor: grab;
             font-size: 70px;
         }
-        button {
-            width: fit-content;
-            padding: 10px;
-            font-size: 16 px;
-            cursor: pointer;
-            
-        }
     </style>
 </head>
 <body>
     <div class="header">
         <div class="logo">
-            <p style="font-family:'Fraktur'">NeuroPath</p>
+            <p>NeuroPath</p>
         </div>
         <div class="buttons">
             <button onclick="toggleMute()">🔇</button>
-            <button onclick="location.href='main.html'">🏠</button>
+            <button onclick="location.href='cover.html'">🏠</button>
         </div>
     </div>
+
     <div id="gameContainer">
         <div class="draggable" id="dragTriangle" style="left: 50px; top: 320px;">▲</div>
         <div class="draggable" id="dragCircle" style="left: 250px; top: 320px;">●</div>
@@ -62,6 +46,7 @@
 
         class Shape {
             constructor(type, x, y, speed) {
+                this.type = type;
                 this.type = type;
                 this.x = x;
                 this.y = y;
@@ -190,3 +175,4 @@
     </script>
 </body>
 </html>
+
