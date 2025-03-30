@@ -3,57 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shape Tracing Game</title>
-    <style>
-        .header { 
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px;
-        }
-        .buttons {
-            display: flex;
-            gap: 10px;
-            margin-left: auto;
-        }
-        canvas {
-            border: 1px solid black;
-            display: block;
-            margin: auto;
-        }
-        #instructions {
-            text-align: center;
-            font-family: Arial, sans-serif;
-        }
-        #scoreboard {
-            text-align: center;
-            font-size: 20px;
-            font-family: Arial, sans-serif;
-            display: none; /* Hidden by default */
-        }
-        button {
-            width: fit-content;
-            padding: 10px;
-            font-size: 16 px;
-            cursor: pointer;
-            
-        }
-    </style>
+    <title>Shape Builder</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="header">
         <div class="logo">
-            <p style="font-family:'Fraktur'">NeuroPath</p>
+            <p>NeuroPath</p>
         </div>
         <div class="buttons">
-            <button onclick="toggleMute()">🔇</button>
-            <button onclick="location.href='main.html'">🏠</button>
+            <button id="mute-btn">🔇</button>
+            <button onclick="location.href='cover.html'">🏠</button>
         </div>
     </div>
-    <h1 id="instructions">Trace the shapes!</h1>
-    <div id="scoreboard"></div>
-    <canvas id="gameCanvas" width="500" height="500"></canvas>
 
-    <script src="ShapeBuilder.js"></script>
+    <div class="content">
+        <h1>Shape Builder</h1>
+        <h2>Trace the shapes!</h2>
+        <canvas id="gameCanvas" width="500" height="500"></canvas>
+        <div id="scoreboard"></div>
+    </div>
+
+    <script src="shapebuilder.js"></script>
+    <script src="index.js"></script>
 </body>
 </html>
