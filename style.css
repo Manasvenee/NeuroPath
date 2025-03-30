@@ -1,0 +1,175 @@
+/* General Body and Layout */
+body {
+    font-family: 'Courier New', monospace;
+    margin: 0;
+    padding: 0;
+    background-color: #FAF0E6; /* Beige */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100vh;
+    color: #654321; /* Brown */
+}
+
+/* Header Styling */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    width: 100%;
+    background-color: #D2B48C; /* Tan */
+    color: #654321; /* Brown */
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.logo p {
+    font-family: 'Fraktur', serif; /* Added fallback serif font */
+    font-size: 24px;
+}
+
+.buttons {
+    display: flex;
+    gap: 10px;
+    margin-left: auto;
+}
+
+.buttons button {
+    background-color: #E3C9A9; /* Light Beige */
+    border: 1px solid #654321; /* Brown */
+    padding: 8px 12px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 5px;
+    color: #654321; /* Brown */
+    transition: background-color 0.3s ease;
+}
+
+.buttons button:hover {
+    background-color: #C1A37A; /* Darker Beige */
+}
+
+/* Main Page Content */
+h1 {
+    text-align: center;
+    margin-top: 100px;
+    color: #8B4513; /* Saddle Brown */
+}
+
+h2 {
+    text-align: center;
+    margin-top: 20px;
+    color: #A0522D; /* Sienna */
+}
+
+button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 8px;
+    background-color: #B8860B; /* Dark Goldenrod */
+    color: #FAF0E6; /* Beige */
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #A0522D; /* Sienna */
+}
+
+/* Cover Page Content */
+.content {
+    margin-top: 80px;
+    text-align: center;
+}
+
+#quote-display {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #8B4513; /* Saddle Brown */
+}
+
+#quote-input {
+    padding: 10px;
+    font-size: 16px;
+    width: 60%;
+    margin-bottom: 10px;
+    border: 1px solid #A0522D; /* Sienna */
+    border-radius: 5px;
+}
+
+#submit-btn {
+    padding: 10px 15px;
+    font-size: 16px;
+    background-color: #B8860B; /* Dark Goldenrod */
+    color: #FAF0E6; /* Beige */
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+#submit-btn:hover {
+    background-color: #A0522D; /* Sienna */
+}
+
+#congratulations-screen {
+    margin-top: 50px;
+    font-size: 24px;
+    font-weight: bold;
+    display: none;
+    color: #8B4513; /* Saddle Brown */
+}
+
+.hidden {
+    display: none;
+}
+
+/* Scoreboard Styles */
+#scoreboard {
+    text-align: center;
+    font-size: 20px;
+    font-family: 'Courier New', monospace;
+    display: none; /* Hidden by default */
+    color: #8B4513; /* Saddle Brown */
+    margin-top: 20px;
+}
+
+/* Canvas and Game Container */
+canvas {
+    border: 2px solid #A0522D; /* Sienna */
+    display: block;
+    margin-top: 20px;
+    background-color: #FFFAF0; /* Ivory */
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.3);
+}
+
+/* Button General Styling */
+button {
+    width: fit-content;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: #B8860B; /* Dark Goldenrod */
+    color: #FAF0E6; /* Beige */
+    border: none;
+}
+
+button:hover {
+    background-color: #A0522D; /* Sienna */
+}
+
+button:active {
+    background-color: #8B4513; /* Saddle Brown */
+}
